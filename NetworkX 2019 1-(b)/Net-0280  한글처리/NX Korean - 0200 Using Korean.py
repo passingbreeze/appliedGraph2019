@@ -1,0 +1,33 @@
+#-*- coding: cp949 -*-
+# Name:        module1
+# Author:      Zoh
+# Created:     21-01-2018
+#-------------------------------------------------------------------------------
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+from matplotlib import font_manager, rc
+font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+plt.rc('font', family=font_name)
+
+#plt.rc('font', family='C:\Windows\Fonts\³ª´®¹Ù¸¥°íµñOTF')
+plt.title( 'ÂÉ·¦ ÇÁ·»Áî')
+
+DG = nx.DiGraph()
+
+DG.add_node( '±è¿¬¾Æ')
+DG.add_node( '¼Õ¿¬Àç')
+DG.add_node( 'È«±æµ¿')
+DG.add_node( 'À±Á¾½Å')
+
+DG.add_edge('±è¿¬¾Æ', 'È«±æµ¿')
+DG.add_edge('È«±æµ¿', 'À±Á¾½Å')
+DG.add_edge('À±Á¾½Å', 'È«±æµ¿')
+
+pos=nx.spring_layout(DG)
+
+nx.draw(DG)
+nx.draw_networkx_labels(DG, pos, font_family=font_name, font_size=13)
+
+plt.show()
